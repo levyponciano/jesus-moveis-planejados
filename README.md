@@ -2,12 +2,12 @@
 
 Site estatico no formato link da bio para Instagram.
 
-## Rodando com Node
+## Rodando localmente
 
-Use o Node para servir o projeto localmente:
+Este site e estatico. Para abrir localmente, use um servidor simples na pasta do projeto:
 
 ```powershell
-npm.cmd start
+npx serve .
 ```
 
 Depois acesse:
@@ -16,11 +16,14 @@ Depois acesse:
 http://localhost:3000
 ```
 
-Para usar outra porta:
+## Build para deploy
 
 ```powershell
-$env:PORT=4000; npm.cmd start
+npm run build
 ```
+
+O comando copia `index.html`, `styles.css`, `script.js` e `img/` para a pasta `dist/`.
+A Vercel esta configurada para publicar essa pasta.
 
 ## O que trocar antes de publicar
 
