@@ -1,36 +1,53 @@
-const business = {
+const BUSINESS = {
   phoneDisplay: "(88) 9211-6914",
   phoneInternational: "558892116914",
   whatsappMessage: "Olá! Vim pelo site e gostaria de fazer um orçamento de móveis planejados."
 };
 
-const revealSelector = [
-  ".hero-photo",
-  ".services",
-  ".projects",
-  ".process",
+const REVEAL_SELECTOR = [
   ".location",
   ".final-cta",
-  ".service-grid article",
-  ".project-card",
-  ".process li",
   ".map-card"
 ].join(", ");
 
-const encodedMessage = encodeURIComponent(business.whatsappMessage);
-const whatsappUrl = `https://wa.me/${business.phoneInternational}?text=${encodedMessage}`;
-const phoneText = document.querySelector("#phoneText");
-const animatedItems = document.querySelectorAll(revealSelector);
+const REVEAL_OPTIONS = {
+  threshold: 0.16,
+  rootMargin: "0px 0px -40px"
+};
 
-document.querySelectorAll('a[href^="https://wa.me/"]').forEach((link) => {
-  link.href = whatsappUrl;
-});
+function getWhatsappUrl() {
+  const encodedMessage = encodeURIComponent(BUSINESS.whatsappMessage);
 
-if (phoneText) {
-  phoneText.textContent = business.phoneDisplay;
+  return `https://wa.me/${BUSINESS.phoneInternational}?text=${encodedMessage}`;
 }
 
-if ("IntersectionObserver" in window) {
+function updateContactLinks() {
+  const whatsappUrl = getWhatsappUrl();
+  const phoneText = document.querySelector("#phoneText");
+
+  document.querySelectorAll('a[href^="https://wa.me/"]').forEach((link) => {
+    link.href = whatsappUrl;
+  });
+
+  if (phoneText) {
+    phoneText.textContent = BUSINESS.phoneDisplay;
+  }
+}
+
+function revealImmediately(items) {
+  items.forEach((item) => {
+    item.classList.add("is-visible");
+  });
+}
+
+function setupScrollReveal() {
+  const animatedItems = document.querySelectorAll(REVEAL_SELECTOR);
+
+  if (!("IntersectionObserver" in window)) {
+    revealImmediately(animatedItems);
+    return;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -40,10 +57,7 @@ if ("IntersectionObserver" in window) {
         }
       });
     },
-    {
-      threshold: 0.16,
-      rootMargin: "0px 0px -40px"
-    }
+    REVEAL_OPTIONS
   );
 
   animatedItems.forEach((item, index) => {
@@ -51,8 +65,7 @@ if ("IntersectionObserver" in window) {
     item.style.transitionDelay = `${Math.min(index * 55, 280)}ms`;
     observer.observe(item);
   });
-} else {
-  animatedItems.forEach((item) => {
-    item.classList.add("is-visible");
-  });
 }
+
+updateContactLinks();
+setupScrollReveal();

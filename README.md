@@ -1,6 +1,14 @@
 # Jesus Moveis Planejados
 
-Site estatico no formato link da bio para Instagram.
+Site estatico no formato link da bio para a Jesus Moveis Planejados.
+
+## Estrutura
+
+- `index.html`: conteudo da pagina.
+- `styles.css`: identidade visual, layout responsivo e animacoes.
+- `script.js`: links de contato e animacoes por rolagem.
+- `img/`: imagens locais usadas pelo site.
+- `build.js`: gera a pasta `dist/` para publicacao.
 
 ## Rodando localmente
 
@@ -25,6 +33,14 @@ npm run build
 O comando copia `index.html`, `styles.css`, `script.js` e `img/` para a pasta `dist/`.
 A Vercel esta configurada para publicar essa pasta.
 
+## Validacao
+
+```powershell
+npm run check
+```
+
+Esse comando verifica a sintaxe dos arquivos JavaScript.
+
 ## O que trocar antes de publicar
 
 1. No arquivo `script.js`, altere:
@@ -33,10 +49,14 @@ A Vercel esta configurada para publicar essa pasta.
    - `whatsappMessage`: mensagem automatica enviada pelo WhatsApp.
 
 2. No arquivo `index.html`, altere:
-   - Link do Instagram em `href="https://www.instagram.com/"`.
-   - Fotos dos projetos nos atributos `src` das tags `img`.
-   - Textos dos servicos e projetos, se quiser deixar mais especifico.
+   - Link do Instagram.
+   - Textos da pagina, se quiser deixar mais especifico.
 
 ## Publicacao
 
-Voce pode publicar a pasta em servicos como Netlify, Vercel, GitHub Pages ou qualquer hospedagem simples de HTML.
+A Vercel deve usar:
+
+- Build command: `npm run build`
+- Output directory: `dist`
+
+Voce tambem pode publicar a pasta `dist/` em servicos como Netlify, GitHub Pages ou qualquer hospedagem simples de HTML.

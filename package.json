@@ -1,9 +1,10 @@
 {
   "name": "jesus-moveis-planejados",
   "version": "1.0.0",
-  "description": "Site link da bio e portfolio para Jesus Moveis Planejados.",
+  "description": "Site link da bio para Jesus Moveis Planejados.",
   "private": true,
   "scripts": {
-    "build": "node build.js"
+    "build": "node build.js",
+    "check": "node --check build.js && node --check script.js"
   }
 }
