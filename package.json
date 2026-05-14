@@ -4,7 +4,6 @@
   "description": "Site link da bio para Jesus Moveis Planejados.",
   "private": true,
   "scripts": {
-    "build": "node build.js",
-    "check": "node --check build.js && node --check script.js"
+    "check": "node --check script.js"
   }
 }

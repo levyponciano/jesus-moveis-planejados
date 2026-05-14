@@ -8,7 +8,6 @@ Site estatico no formato link da bio para a Jesus Moveis Planejados.
 - `styles.css`: identidade visual, layout responsivo e animacoes.
 - `script.js`: links de contato e animacoes por rolagem.
 - `img/`: imagens locais usadas pelo site.
-- `build.js`: gera a pasta `dist/` para publicacao.
 
 ## Rodando localmente
 
@@ -23,15 +22,6 @@ Depois acesse:
 ```text
 http://localhost:3000
 ```
-
-## Build para deploy
-
-```powershell
-npm run build
-```
-
-O comando copia `index.html`, `styles.css`, `script.js` e `img/` para a pasta `dist/`.
-A Vercel esta configurada para publicar essa pasta.
 
 ## Validacao
 
@@ -54,9 +44,19 @@ Esse comando verifica a sintaxe dos arquivos JavaScript.
 
 ## Publicacao
 
-A Vercel deve usar:
+O projeto publica no GitHub Pages por GitHub Actions.
 
-- Build command: `npm run build`
-- Output directory: `dist`
+Workflow:
 
-Voce tambem pode publicar a pasta `dist/` em servicos como Netlify, GitHub Pages ou qualquer hospedagem simples de HTML.
+```text
+.github/workflows/deploy-pages.yml
+```
+
+Ao enviar commits para a branch `main`, a Action prepara os arquivos estaticos e publica:
+
+- `index.html`
+- `styles.css`
+- `script.js`
+- `img/`
+
+No GitHub, confira em `Settings > Pages` se o source esta configurado como `GitHub Actions`.
