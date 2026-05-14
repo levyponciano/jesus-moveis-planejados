@@ -1,4 +1,6 @@
 :root {
+  color-scheme: dark;
+
   --bg: #0b0b0c;
   --surface: #151515;
   --text: #f8f4ee;
@@ -16,6 +18,7 @@
 }
 
 html {
+  background: #0b0b0c;
   scroll-behavior: smooth;
 }
 
@@ -26,7 +29,8 @@ body {
   color: var(--text);
   background:
     radial-gradient(circle at top, rgba(249, 115, 22, 0.16), transparent 30rem),
-    linear-gradient(180deg, #101010 0%, var(--bg) 42%, #070707 100%);
+    linear-gradient(180deg, #101010 0%, var(--bg) 42%, #070707 100%),
+    #0b0b0c;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;
 }
